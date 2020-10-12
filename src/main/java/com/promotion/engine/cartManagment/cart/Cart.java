@@ -11,4 +11,8 @@ public abstract class Cart {
     public TreeMap<String, Integer> accessCart() {
         return itemsAndQuantity;
     }
+
+    public void emptyCart() {
+        itemsAndQuantity.clear();
+    }
 }

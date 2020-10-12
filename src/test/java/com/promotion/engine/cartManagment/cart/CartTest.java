@@ -26,4 +26,12 @@ public class CartTest {
         cart.addItemToCart("A", 1);
         assertTrue(cart.accessCart().containsKey("A"));
     }
+
+    @Test
+    void emptyCart_CartShouldNotAnyItem() {
+        cart.addItemToCart("A", 1);
+        cart.addItemToCart("B", 1);
+        cart.emptyCart();
+        assertTrue(cart.accessCart().isEmpty());
+    }
 }
