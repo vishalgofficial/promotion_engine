@@ -69,4 +69,10 @@ public class CartTest {
         cart.addItemToCart("A", 3);
         assertEquals(130.00, cart.calculateTotalPrice(cart.accessCart()));
     }
+
+    @Test
+    void calculateTotalPrice_Item_B_Quantity_2_Offer_45() throws Exception {
+        cart.addItemToCart("B", 2);
+        assertEquals(45.00, cart.calculateTotalPrice(cart.accessCart()));
+    }
 }

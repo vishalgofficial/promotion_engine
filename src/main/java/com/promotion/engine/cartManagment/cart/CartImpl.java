@@ -46,7 +46,14 @@ public class CartImpl extends Cart {
                 Item itemOffer = Offers.valueOf(item).getOffer();
                 if (itemOffer.quantity < quantity) {
                     total = total + ((quantity % itemOffer.quantity) * ItemPrice.valueOf(item).getPrice() + (quantity / itemOffer.quantity) * itemOffer.price);
-                } 
+                } else if (itemOffer.quantity.equals(quantity)) {
+                    total += itemOffer.price;
+                } else {
+                    total += (quantity) * ItemPrice.valueOf(item).getPrice();
+                }
+            } else {
+                total += (quantity) * ItemPrice.valueOf(item).getPrice();
+            }
         }
         return total;
     }
