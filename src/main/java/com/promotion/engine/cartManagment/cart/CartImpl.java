@@ -1,5 +1,7 @@
 package com.promotion.engine.cartManagment.cart;
 
+import java.util.Arrays;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class CartImpl extends Cart {
@@ -36,6 +38,16 @@ public class CartImpl extends Cart {
 
     @Override
     public double calculateTotalPrice(TreeMap<String, Integer> itemsListMap) {
-        return 0;
+        Double total = 0.0;
+        Set<String> keys = itemsListMap.keySet();
+        for (String item : keys) {
+            Integer quantity = itemsListMap.get(item);
+            if (Arrays.stream(Offers.values()).anyMatch(o -> o.name().equalsIgnoreCase(item))) {
+                Item itemOffer = Offers.valueOf(item).getOffer();
+                if (itemOffer.quantity < quantity) {
+                    total = total + ((quantity % itemOffer.quantity) * ItemPrice.valueOf(item).getPrice() + (quantity / itemOffer.quantity) * itemOffer.price);
+                } 
+        }
+        return total;
     }
 }
