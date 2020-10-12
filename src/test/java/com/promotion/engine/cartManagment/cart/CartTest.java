@@ -34,4 +34,12 @@ public class CartTest {
         cart.emptyCart();
         assertTrue(cart.accessCart().isEmpty());
     }
+
+    @Test
+    void addItem_CheckCartShouldHaveUpdatedQuantityOfItem() {
+        cart.emptyCart();
+        cart.addItemToCart("A", 1);
+        cart.addItemToCart("A", 1);
+        assertEquals(2, cart.accessCart().get("A"));
+    }
 }
