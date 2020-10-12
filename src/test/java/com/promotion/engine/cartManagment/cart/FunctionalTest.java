@@ -33,4 +33,17 @@ public class FunctionalTest {
         assertEquals(370.0, cart.calculateTotalPrice(cart.accessCart()));
         System.out.println(cart.calculateTotalPrice(cart.accessCart()));
     }
+
+    @Test
+    void scenarioThird() throws Exception {
+        cart.emptyCart();
+        cart.addItemToCart("A", 3);
+        cart.addItemToCart("B", 5);
+        cart.addItemToCart("C", 1);
+        cart.addItemToCart("D", 1);
+        cart.reviewCart();
+        assertEquals(285.00, cart.calculateTotalPrice(cart.accessCart()));
+        System.out.println(cart.calculateTotalPrice(cart.accessCart()));
+    }
+
 }
