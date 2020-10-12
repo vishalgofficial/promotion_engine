@@ -12,6 +12,8 @@ public abstract class Cart {
 
     public abstract void reviewCart() throws Exception;
 
+    public abstract double calculateTotalPrice(TreeMap<String, Integer> itemsListMap);
+
     public TreeMap<String, Integer> accessCart() {
         return itemsAndQuantity;
     }

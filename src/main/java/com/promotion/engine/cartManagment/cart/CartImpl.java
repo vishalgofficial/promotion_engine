@@ -1,5 +1,7 @@
 package com.promotion.engine.cartManagment.cart;
 
+import java.util.TreeMap;
+
 public class CartImpl extends Cart {
 
     @Override
@@ -30,5 +32,10 @@ public class CartImpl extends Cart {
             Integer quantity = itemsAndQuantity.get(item);
             System.out.println("Item: " + item + " of Quantity: " + quantity);
         }
+    }
+
+    @Override
+    public double calculateTotalPrice(TreeMap<String, Integer> itemsListMap) {
+        return 0;
     }
 }
