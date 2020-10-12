@@ -4,6 +4,10 @@ public class CartImpl extends Cart {
 
     @Override
     public void addItemToCart(String item, int quantity) {
-        itemsAndQuantity.put(item, quantity);
+        if (!itemsAndQuantity.containsKey(item)) {
+            itemsAndQuantity.put(item, quantity);
+        } else {
+            itemsAndQuantity.put(item, quantity + itemsAndQuantity.get(item));
+        }
     }
 }
