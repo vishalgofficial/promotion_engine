@@ -8,6 +8,8 @@ public abstract class Cart {
 
     public abstract void addItemToCart(String item, int quantity);
 
+    public abstract void removeItemFromCart(String item, int quantity) throws Exception;
+
     public TreeMap<String, Integer> accessCart() {
         return itemsAndQuantity;
     }

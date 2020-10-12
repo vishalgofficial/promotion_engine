@@ -10,4 +10,9 @@ public class CartImpl extends Cart {
             itemsAndQuantity.put(item, quantity + itemsAndQuantity.get(item));
         }
     }
+
+    @Override
+    public void removeItemFromCart(String item, int quantity) throws Exception {
+        if (!itemsAndQuantity.containsKey(item)) throw new Exception("No such item in your cart");
+    }
 }

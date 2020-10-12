@@ -3,8 +3,7 @@ package com.promotion.engine.cartManagment.cart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CartTest {
 
@@ -41,5 +40,10 @@ public class CartTest {
         cart.addItemToCart("A", 1);
         cart.addItemToCart("A", 1);
         assertEquals(2, cart.accessCart().get("A"));
+    }
+
+    @Test
+    void removeItem_ShouldThrowExceptionInCaseOfMissingItem() throws Exception {
+        assertThrows(Exception.class, () -> cart.removeItemFromCart("c", 1));
     }
 }
