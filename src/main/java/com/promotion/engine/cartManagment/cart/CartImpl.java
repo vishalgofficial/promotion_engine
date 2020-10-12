@@ -42,17 +42,18 @@ public class CartImpl extends Cart {
         Set<String> keys = itemsListMap.keySet();
         for (String item : keys) {
             Integer quantity = itemsListMap.get(item);
+            double itemPrice = ItemPrice.valueOf(item).getPrice();
             if (Arrays.stream(Offers.values()).anyMatch(o -> o.name().equalsIgnoreCase(item))) {
                 Item itemOffer = Offers.valueOf(item).getOffer();
                 if (itemOffer.quantity < quantity) {
-                    total = total + ((quantity % itemOffer.quantity) * ItemPrice.valueOf(item).getPrice() + (quantity / itemOffer.quantity) * itemOffer.price);
+                    total = total + ((quantity % itemOffer.quantity) * itemPrice + (quantity / itemOffer.quantity) * itemOffer.price);
                 } else if (itemOffer.quantity.equals(quantity)) {
                     total += itemOffer.price;
                 } else {
-                    total += (quantity) * ItemPrice.valueOf(item).getPrice();
+                    total += (quantity) * itemPrice;
                 }
             } else {
-                total += (quantity) * ItemPrice.valueOf(item).getPrice();
+                total += (quantity) * itemPrice;
             }
         }
         return total;
