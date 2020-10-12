@@ -43,7 +43,25 @@ public class CartTest {
     }
 
     @Test
-    void removeItem_ShouldThrowExceptionInCaseOfMissingItem() throws Exception {
+    void removeItemFromCart_ShouldThrowExceptionInCaseOfMissingItem() throws Exception {
         assertThrows(Exception.class, () -> cart.removeItemFromCart("c", 1));
     }
+
+    @Test
+    void removeItemFromCart_CartShouldNotHaveRemovedItem() throws Exception {
+        cart.addItemToCart("A", 1);
+        cart.addItemToCart("B", 1);
+        cart.removeItemFromCart("A", 1);
+        assertEquals(1, cart.accessCart().size());
+    }
+
+    @Test
+    void reviewItem_CartShouldCorrectItem() throws Exception {
+        cart.addItemToCart("A", 1);
+        cart.addItemToCart("B", 1);
+        cart.removeItemFromCart("A", 1);
+        cart.reviewCart();
+        assertEquals(1, cart.accessCart().size());
+    }
+
 }
